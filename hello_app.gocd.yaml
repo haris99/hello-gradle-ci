@@ -39,7 +39,7 @@ pipelines:
                     command: bash
                     arguments:
                       - -c
-                      - docker push mtararujs/hello-app:lates
+                      - docker push mtararujs/hello-app:latest
       - deploy-dev:
           environment_variables:
             ENV_NAME: dev
