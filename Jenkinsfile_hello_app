@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('build-app') {
             steps {
-                sh "docker build -t mtararujs/hello-app:latest ."
-                sh "docker push mtararujs/hello-app:latest"
+                // sh "docker build -t mtararujs/hello-app:latest ."
+                // sh "docker push mtararujs/hello-app:latest"
             }
         }
         stage('deploy-dev') {
