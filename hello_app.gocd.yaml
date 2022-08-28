@@ -11,7 +11,7 @@ common:
         command: bash
         arguments:
           - -c
-          - kubectl set image deployment hello-app-$ENV_NAME hello-app-$ENV_NAME-pod=mtararujs/hello-app:latest
+          - kubectl set image deployment hello-app-$ENV_NAME hello-app-$ENV_NAME-pod=mtararujs/hello-app:$GO_REVISION_MYGIT
   test-tasks: &test-tasks
     - exec:
         command: bash
@@ -61,12 +61,12 @@ pipelines:
                     command: bash
                     arguments:
                       - -c
-                      - docker build -t mtararujs/hello-app:latest .
+                      - docker build -t mtararujs/hello-app:$GO_REVISION_MYGIT .
                 - exec:
                     command: bash
                     arguments:
                       - -c
-                      - docker push mtararujs/hello-app:latest
+                      - docker push mtararujs/hello-app:$GO_REVISION_MYGIT
       - deploy-dev:
           environment_variables:
             ENV_NAME: dev
