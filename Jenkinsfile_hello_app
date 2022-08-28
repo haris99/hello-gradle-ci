@@ -63,6 +63,6 @@ def test(String environment){
             reportDir: '', 
             reportFiles: "report_${environment}.html", 
             reportName: "Test Report ${environment}", 
-            reportTitles: ''])
+            reportTitles: "Test Report ${environment}"])
    }
 }
