@@ -5,12 +5,12 @@ common:
     - exec:
         command: echo
         arguments:
-          - "Deployment of hello-app on ${ENV_NAME} is starting.."
+          - "Deployment of hello-app on $ENV_NAME is starting.."
   test-tasks: &test-tasks
     - exec:
         command: echo
         arguments:
-          - "Testing of hello-app on ${ENV_NAME} is starting.."
+          - "Testing of hello-app on $ENV_NAME is starting.."
 
 pipelines:
   hello-app:
