@@ -7,13 +7,13 @@ pipeline {
         stage('build-app') {
             steps {
                 sh "docker build -t mtararujs/hello-app:latest ."
-                sh "dockeer push mtararujs/hello-app:latest"
+                sh "docker push mtararujs/hello-app:latest"
             }
         }
         stage('deploy-dev') {
             steps {
                 script{
-                    deploy("DEV")
+                    deploy("dev")
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('deploy-prd') {
             steps {
                 script{
-                    deploy("PRD")
+                    deploy("prd")
                 }
             }
         }
@@ -42,7 +42,8 @@ pipeline {
 }
 
 def deploy(String environment){
-   echo "Deployment of hello-app to ${environment}" 
+   echo "Deployment of hello-app to ${environment} is starting.." 
+   sh "kubectl set image deployment hello-app-${environment} hello-app-${environment}-pod=mtararujs/hello-app:latest"
 }
 
 def test(String environment){
