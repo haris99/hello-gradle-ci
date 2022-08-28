@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('build-app') {
             steps {
-                echo "Build app"
+                sh "docker build -t mtararujs/hello-app:latest ."
+                sh "dockeer push mtararujs/hello-app:latest"
             }
         }
         stage('deploy-dev') {
