@@ -7,7 +7,7 @@ pipeline {
         stage('build-app') {
             steps {
                 echo "Build app"
-                sh "docker build -t haris99/hello-app:latest ."
+                //sh "docker build -t haris99/hello-app:latest ."
                 sh "docker push haris99/hello-app:latest"
             }
         }
@@ -43,7 +43,8 @@ pipeline {
 }
 
 def deploy(String environment){
-   echo "Deployment of hello-app to ${environment}" 
+   echo "Deployment of hello-app to ${environment} is starting.." 
+   sh "kubectl set image deployment hello-app-${environment} hello-app-${environment}-pod=haris99/hello-app:latest"
 }
 
 def test(String environment){
