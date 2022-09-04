@@ -44,6 +44,7 @@ pipeline {
 
 def deploy(String environment){
    echo "Deployment of hello-app to ${environment} is starting.." 
+   sh "alias kubectl="minikube kubectl --"
    sh "kubectl set image deployment hello-app-${environment} hello-app-${environment}-pod=haris99/hello-app:latest"
 }
 
