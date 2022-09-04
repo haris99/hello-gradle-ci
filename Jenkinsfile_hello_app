@@ -7,7 +7,6 @@ pipeline {
         stage('build-app') {
             steps {
                 echo "Build app"
-                sh "docker login"
                 sh "docker build -t haris99/hello-app:latest ."
                 sh "docker push haris99/hello-app:latest"
             }
