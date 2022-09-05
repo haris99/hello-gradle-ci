@@ -58,3 +58,4 @@ def test(String environment){
         sh "docker cp api_test_executor_${environment}:/usr/scr/api-tests/test-output/report.html report_${environment}.html"
         sh "docker rm -f api_test_executor_${environment}"
    }
+}
