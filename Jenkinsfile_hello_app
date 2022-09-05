@@ -49,7 +49,7 @@ def deploy(String environment){
 
 def test(String environment){
    echo "Testing of hello-app to ${environment} is starting"
-   sh "sudo kubectl -kubeconfig $KUBECONFIG/config get deployments"
+   sh "sudo kubectl --kubeconfig $KUBECONFIG/config get deployments"
    sh "docker run --network=host -d -t --name api_test_executor_${environment} haris99/ubuntu_ruby_executor:latest"
    sh "docker exec api_test_executor_${environment} cucumber PLATFORM=DEV --format html --out test-output/report.html"
    sh "docker cp api_test_executor_${environment}:/usr/scr/api-tests/test-output/report.html report_${environment}.html"
